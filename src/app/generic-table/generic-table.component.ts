@@ -7,15 +7,19 @@ import { GenericTableService, PeriodicElement } from '../services/generic-table.
   styleUrls: ['./generic-table.component.scss']
 })
 export class GenericTableComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['id', 'name', 'email', 'gender'];
   columnsToDisplay: string[] = this.displayedColumns.slice();
-  dataSource:PeriodicElement[];
+  dataSource:PeriodicElement[] = [] as PeriodicElement[];
   listOfFields: any;
   constructor(private gtService: GenericTableService) { 
-    this.dataSource = gtService.getGridData();
-    this.listOfFields = Object.keys(this.dataSource[0]).map(field => {
-      return {selected: this.displayedColumns.indexOf(field) !== -1, field}
+    gtService.getGridData().subscribe((res: any) => {
+      console.log(res);
+      this.dataSource = res.data;
+      this.listOfFields = Object.keys(this.dataSource[0]).map(field => {
+        return {selected: this.displayedColumns.indexOf(field) !== -1, field}
+      });
     });
+    
   }
 
   ngOnInit(): void {

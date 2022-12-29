@@ -8,6 +8,7 @@ import { GenericTableComponent } from './generic-table/generic-table.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,6 +17,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatTableModule,
     MatMenuModule,
     MatIconModule,
