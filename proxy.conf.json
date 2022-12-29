@@ -1,0 +1,6 @@
+{
+  "/public": {
+    "target": "http://gorest.co.in",
+    "pathRewrite": {"^/public" : "/public"}
+  }
+}

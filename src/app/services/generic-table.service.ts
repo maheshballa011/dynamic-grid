@@ -36,7 +36,7 @@ export class GenericTableService {
 
   getGridData() {
     return this.http
-      .get<any[]>('https://gorest.co.in/public/v1/users');
+      .get<any[]>('/public/v1/users');
       
   }
 }
