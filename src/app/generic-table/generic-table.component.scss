@@ -2,25 +2,22 @@ table {
   width: 100%;
 }
 
-.generic-table-container{
-    display: inline-flex;
-    width: 100%;
-    table {
-        width: 97%;
-    }
-    button {
-        width: 3%;
-        height: fit-content;
-        cursor: pointer;
-    }
-    
+.generic-table-container {
+  display: inline-flex;
+  width: 100%;
 }
-section{
-    h4{
-        color: #fff;
-    }
+.generic-table-container table {
+  width: 97%;
+}
+.generic-table-container button {
+  width: 3%;
+  height: fit-content;
+  cursor: pointer;
+}
+section h4 {
+  color: #fff;
 }
 
 ::ng-deep .mat-checkbox .mat-checkbox-label {
-    color: #fff;
+  color: #fff;
 }
