@@ -8,9 +8,11 @@ import { GenericTableService, PeriodicElement } from '../services/generic-table.
 })
 export class GenericTableComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'email', 'gender'];
+  filterValue: any = '';
   columnsToDisplay: string[] = this.displayedColumns.slice();
   dataSource:PeriodicElement[] = [] as PeriodicElement[];
   listOfFields: any;
+  filteredColumns: any;
   constructor(private gtService: GenericTableService) { 
     gtService.getGridData().subscribe((res: any) => {
       console.log(res);
@@ -18,6 +20,7 @@ export class GenericTableComponent implements OnInit {
       this.listOfFields = Object.keys(this.dataSource[0]).map(field => {
         return {selected: this.displayedColumns.indexOf(field) !== -1, field}
       });
+      this.filteredColumns = this.listOfFields.slice();
     });
     
   }
@@ -32,6 +35,18 @@ export class GenericTableComponent implements OnInit {
     }else{
       this.columnsToDisplay.splice(this.columnsToDisplay.indexOf(fieldObj.field),1);
     }
+  }
+
+  onFilterChange(event: any){
+    const filteredColumn = event.target.value;
+    if(filteredColumn){
+      this.filteredColumns = this.listOfFields.filter((field: any) => {
+        return field.field.indexOf(filteredColumn) !== -1;
+      });
+    }else{
+      this.filteredColumns = this.listOfFields.slice();
+    }
+    
   }
 
 }

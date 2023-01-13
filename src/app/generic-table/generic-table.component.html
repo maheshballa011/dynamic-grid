@@ -46,7 +46,13 @@
   <mat-menu #menu="matMenu">
     <section class="example-section">
       <h4>Select field to show:</h4>
-      <p *ngFor="let fieldObj of listOfFields">
+      <mat-form-field class="example-form-field">
+        <input placeholder="Filter columns" (keyup)="onFilterChange($event)" (click)="$event.stopPropagation()" matInput type="text" [value]="filterValue">
+        <button *ngIf="filterValue" matSuffix mat-icon-button aria-label="Clear" (click)="filterValue=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <p *ngFor="let fieldObj of filteredColumns">
         <mat-checkbox formControlName="pepperoni" [checked]="fieldObj.selected" (change)="onChangeField($event.checked, fieldObj)">{{ fieldObj.field }}</mat-checkbox>
       </p>
     </section>
